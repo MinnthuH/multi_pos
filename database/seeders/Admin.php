@@ -13,7 +13,7 @@ class Admin extends Seeder
      */
     public function run(): void
     { {
-            \App\Models\User::factory()->create([
+            \App\Models\AdminUser::factory()->create([
                 'name' => 'Admin',
                 'phno' => '09123456789',
                 'email' => 'admin@admin.com',
