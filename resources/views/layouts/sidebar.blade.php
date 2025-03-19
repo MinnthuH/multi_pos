@@ -45,33 +45,16 @@
 
             <ul id="side-menu">
 
-                <li class="menu-title">Navigation</li>
+                {{-- <li class="menu-title">Navigation</li> --}}
 
                 <li>
-                    <a href="#sidebarDashboards" data-bs-toggle="collapse">
+                    <a href="{{ route('dashboard') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="badge bg-success rounded-pill float-end">4</span>
-                        <span> Dashboards </span>
+                        <span> Dashboard </span>
                     </a>
-                    <div class="collapse" id="sidebarDashboards">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="index.html">Dashboard 1</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-2.html">Dashboard 2</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-3.html">Dashboard 3</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-4.html">Dashboard 4</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
 
-                <li class="menu-title mt-2">Apps</li>
+                {{-- <li class="menu-title mt-2">Apps</li>
 
                 <li>
                     <a href="apps-calendar.html">
@@ -770,7 +753,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
             </ul>
 
         </div>
