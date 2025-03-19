@@ -3,15 +3,6 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    {{-- <div class="tw-py-12">
-        <div class="tw-max-w-7xl tw-mx-auto sm:tw-px-6 lg:tw-px-8">
-            <div class="tw-bg-white dark:tw-bg-gray-800 tw-overflow-hidden tw-shadow-sm sm:tw-rounded-lg">
-                <div class="tw-p-6 tw-text-gray-900 dark:tw-text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <div class="content">
 
         <!-- Start Content-->
@@ -21,7 +12,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                        <div class="page-title-right">
+                        {{-- <div class="page-title-right">
                             <form class="d-flex align-items-center mb-3">
                                 <div class="input-group input-group-sm">
                                     <input type="text" class="form-control border-0" id="dash-daterange">
@@ -36,7 +27,7 @@
                                     <i class="mdi mdi-filter-variant"></i>
                                 </a>
                             </form>
-                        </div>
+                        </div> --}}
                         <h4 class="page-title">Dashboard</h4>
                     </div>
                 </div>

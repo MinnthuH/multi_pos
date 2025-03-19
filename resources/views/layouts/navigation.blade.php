@@ -147,7 +147,7 @@
                 </div>
             </li>
 
-            <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+            {{-- <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="assets/images/flags/us.jpg" alt="user-image" height="16">
@@ -179,7 +179,7 @@
                     </a>
 
                 </div>
-            </li>
+            </li> --}}
 
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
@@ -281,9 +281,9 @@
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                    {{-- <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle"> --}}
                     <span class="pro-user-name ms-1">
-                        Geneva <i class="mdi mdi-chevron-down"></i>
+                        {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -293,27 +293,15 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ route('profile.edit') }}" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
-                        <span>My Account</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings"></i>
-                        <span>Settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-lock"></i>
-                        <span>Lock Screen</span>
+                        <span>Edit Profile</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ route('logout') }}" class="dropdown-item notify-item">
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a>
@@ -331,23 +319,25 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
+            <a href="" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="">
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
-                <span class="logo-lg">
-                    <img src="assets/images/logo-dark.png" alt="" height="20">
+                <span class="logo-lg pt-3 ps-5">
+                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt=""
+                        style="height: 20px; !important">
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>
 
-            <a href="index.html" class="logo logo-light text-center">
+            <a href="" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="">
                 </span>
-                <span class="logo-lg">
-                    <img src="assets/images/logo-light.png" alt="" height="20">
+                <span class="logo-lg pt-3 ps-5">
+                    <img src="{{ asset('assets/images/logo-light.png') }}" alt=""
+                        style="height: 20px; !important">
                 </span>
             </a>
         </div>

@@ -39,7 +39,7 @@
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Head js -->
     <script src="{{ asset('assets/js/head.js') }}"></script>
-    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body data-layout-mode="default" data-theme="light" data-topbar-color="dark" data-menu-position="fixed"
