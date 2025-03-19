@@ -1,111 +1,524 @@
-<nav x-data="{ open: false }"
-    class="tw-bg-white dark:tw-bg-gray-800 tw-border-b tw-border-gray-100 dark:tw-border-gray-700">
-    <!-- Primary Navigation Menu -->
-    <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
-        <div class="tw-flex tw-justify-between tw-h-16">
-            <div class="tw-flex">
-                <!-- Logo -->
-                <div class="shrink-0 tw-flex tw-items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo
-                            class="tw-block tw-h-9 tw-w-auto tw-fill-current tw-text-gray-800 dark:tw-text-gray-200" />
-                    </a>
-                </div>
+<!-- Topbar Start -->
+<div class="navbar-custom">
+    <div class="container-fluid">
+        <ul class="list-unstyled topnav-menu float-end mb-0">
 
-                <!-- Navigation Links -->
-                <div class="tw-hidden tw-space-x-8 sm:tw--my-px sm:ms-10 sm:tw-flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-            </div>
-
-            <!-- Settings Dropdown -->
-            <div class="tw-hidden sm:tw-flex sm:tw-items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button
-                            class="tw-inline-flex tw-items-center tw-px-3 tw-py-2 tw-border tw-border-transparent tw-text-sm tw-leading-4 tw-font-medium tw-rounded-md tw-text-gray-500 dark:tw-text-gray-400 tw-bg-white dark:tw-bg-gray-800 hover:tw-text-gray-700 dark:hover:tw-text-gray-300 focus:tw-outline-none tw-transition tw-ease-in-out tw-duration-150">
-                            <div>{{ Auth::user()->name }}</div>
-
-                            <div class="ms-1">
-                                <svg class="tw-fill-current tw-h-4 tw-w-4" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
+            <li class="d-none d-lg-block">
+                <form class="app-search">
+                    <div class="app-search-box dropdown">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Search..." id="top-search">
+                            <button class="btn input-group-text" type="submit">
+                                <i class="fe-search"></i>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu dropdown-lg" id="search-dropdown">
+                            <!-- item-->
+                            <div class="dropdown-header noti-title">
+                                <h5 class="text-overflow mb-2">Found 22 results</h5>
                             </div>
-                        </button>
-                    </x-slot>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="fe-home me-1"></i>
+                                <span>Analytics Report</span>
+                            </a>
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="fe-aperture me-1"></i>
+                                <span>How can I help you?</span>
+                            </a>
 
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i class="fe-settings me-1"></i>
+                                <span>User profile settings</span>
+                            </a>
 
-            <!-- Hamburger -->
-            <div class="-me-2 tw-flex tw-items-center sm:tw-hidden">
-                <button @click="open = ! open"
-                    class="tw-inline-flex tw-items-center tw-justify-center tw-p-2 tw-rounded-md tw-text-gray-400 dark:tw-text-gray-500 hover:tw-text-gray-500 dark:hover:tw-text-gray-400 hover:tw-bg-gray-100 dark:hover:tw-bg-gray-900 focus:tw-outline-none focus:tw-bg-gray-100 dark:focus:tw-bg-gray-900 focus:tw-text-gray-500 dark:focus:tw-text-gray-400 tw-transition tw-duration-150 tw-ease-in-out">
-                    <svg class="tw-h-6 tw-w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{ 'tw-hidden': open, 'tw-inline-flex': !open }" class="tw-inline-flex"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{ 'tw-hidden': !open, 'tw-inline-flex': open }" class="tw-hidden"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
+                            <!-- item-->
+                            <div class="dropdown-header noti-title">
+                                <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
+                            </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{ 'tw-block': open, 'tw-hidden': !open }" class="tw-hidden sm:tw-hidden">
-        <div class="tw-pt-2 tw-pb-3 tw-space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+                            <div class="notification-list">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="d-flex align-items-start">
+                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-2.jpg"
+                                            alt="Generic placeholder image" height="32">
+                                        <div class="w-100">
+                                            <h5 class="m-0 font-14">Erwin E. Brown</h5>
+                                            <span class="font-12 mb-0">UI Designer</span>
+                                        </div>
+                                    </div>
+                                </a>
 
-        <!-- Responsive Settings Options -->
-        <div class="tw-pt-4 tw-pb-1 tw-border-t tw-border-gray-200 dark:tw-border-gray-600">
-            <div class="tw-px-4">
-                <div class="tw-font-medium tw-text-base tw-text-gray-800 dark:tw-text-gray-200">{{ Auth::user()->name }}
-                </div>
-                <div class="tw-font-medium tw-text-sm tw-text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="d-flex align-items-start">
+                                        <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-5.jpg"
+                                            alt="Generic placeholder image" height="32">
+                                        <div class="w-100">
+                                            <h5 class="m-0 font-14">Jacob Deo</h5>
+                                            <span class="font-12 mb-0">Developer</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
 
-            <div class="tw-mt-3 tw-space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                        onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
+                        </div>
+                    </div>
                 </form>
-            </div>
+            </li>
+
+            <li class="dropdown d-inline-block d-lg-none">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-search noti-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
+                    <form class="p-3">
+                        <input type="text" class="form-control" placeholder="Search ..."
+                            aria-label="Recipient's username">
+                    </form>
+                </div>
+            </li>
+
+            <li class="dropdown d-none d-lg-inline-block">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen"
+                    href="#">
+                    <i class="fe-maximize noti-icon"></i>
+                </a>
+            </li>
+
+            <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-grid noti-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-lg dropdown-menu-end">
+
+                    <div class="p-lg-1">
+                        <div class="row g-0">
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/slack.png" alt="slack">
+                                    <span>Slack</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/github.png" alt="Github">
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/dribbble.png" alt="dribbble">
+                                    <span>Dribbble</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row g-0">
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
+                                    <span>Bitbucket</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/dropbox.png" alt="dropbox">
+                                    <span>Dropbox</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/g-suite.png" alt="G Suite">
+                                    <span>G Suite</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+
+            <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <img src="assets/images/flags/us.jpg" alt="user-image" height="16">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12">
+                        <span class="align-middle">German</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12">
+                        <span class="align-middle">Italian</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12">
+                        <span class="align-middle">Spanish</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12">
+                        <span class="align-middle">Russian</span>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list topbar-dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-bell noti-icon"></i>
+                    <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-lg">
+
+                    <!-- item-->
+                    <div class="dropdown-item noti-title">
+                        <h5 class="m-0">
+                            <span class="float-end">
+                                <a href="" class="text-dark">
+                                    <small>Clear All</small>
+                                </a>
+                            </span>Notification
+                        </h5>
+                    </div>
+
+                    <div class="noti-scroll" data-simplebar>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                            <div class="notify-icon">
+                                <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle"
+                                    alt="" />
+                            </div>
+                            <p class="notify-details">Cristina Pride</p>
+                            <p class="text-muted mb-0 user-msg">
+                                <small>Hi, How are you? What about our next meeting</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-primary">
+                                <i class="mdi mdi-comment-account-outline"></i>
+                            </div>
+                            <p class="notify-details">Caleb Flakelar commented on Admin
+                                <small class="text-muted">1 min ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon">
+                                <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle"
+                                    alt="" />
+                            </div>
+                            <p class="notify-details">Karen Robinson</p>
+                            <p class="text-muted mb-0 user-msg">
+                                <small>Wow ! this admin looks good and awesome design</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning">
+                                <i class="mdi mdi-account-plus"></i>
+                            </div>
+                            <p class="notify-details">New user registered.
+                                <small class="text-muted">5 hours ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-info">
+                                <i class="mdi mdi-comment-account-outline"></i>
+                            </div>
+                            <p class="notify-details">Caleb Flakelar commented on Admin
+                                <small class="text-muted">4 days ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-secondary">
+                                <i class="mdi mdi-heart"></i>
+                            </div>
+                            <p class="notify-details">Carlos Crouch liked
+                                <b>Admin</b>
+                                <small class="text-muted">13 days ago</small>
+                            </p>
+                        </a>
+                    </div>
+
+                    <!-- All-->
+                    <a href="javascript:void(0);"
+                        class="dropdown-item text-center text-primary notify-item notify-all">
+                        View all
+                        <i class="fe-arrow-right"></i>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list topbar-dropdown">
+                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                    <span class="pro-user-name ms-1">
+                        Geneva <i class="mdi mdi-chevron-down"></i>
+                    </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                    <!-- item-->
+                    <div class="dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome !</h6>
+                    </div>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-user"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-settings"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-lock"></i>
+                        <span>Lock Screen</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-log-out"></i>
+                        <span>Logout</span>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list">
+                <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
+                    <i class="fe-settings noti-icon"></i>
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- LOGO -->
+        <div class="logo-box">
+            <a href="index.html" class="logo logo-dark text-center">
+                <span class="logo-sm">
+                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                    <!-- <span class="logo-lg-text-light">UBold</span> -->
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo-dark.png" alt="" height="20">
+                    <!-- <span class="logo-lg-text-light">U</span> -->
+                </span>
+            </a>
+
+            <a href="index.html" class="logo logo-light text-center">
+                <span class="logo-sm">
+                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo-light.png" alt="" height="20">
+                </span>
+            </a>
         </div>
+
+        <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+            <li>
+                <button class="button-menu-mobile waves-effect waves-light">
+                    <i class="fe-menu"></i>
+                </button>
+            </li>
+
+            <li>
+                <!-- Mobile menu toggle (Horizontal Layout)-->
+                <a class="navbar-toggle nav-link" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+                <!-- End mobile menu toggle-->
+            </li>
+
+            <li class="dropdown d-none d-xl-block">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
+                    Create New
+                    <i class="mdi mdi-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="fe-briefcase me-1"></i>
+                        <span>New Projects</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="fe-user me-1"></i>
+                        <span>Create Users</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="fe-bar-chart-line- me-1"></i>
+                        <span>Revenue Report</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="fe-settings me-1"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <i class="fe-headphones me-1"></i>
+                        <span>Help & Support</span>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown dropdown-mega d-none d-xl-block">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
+                    Mega Menu
+                    <i class="mdi mdi-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu dropdown-megamenu">
+                    <div class="row">
+                        <div class="col-sm-8">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5 class="text-dark mt-0">UI Components</h5>
+                                    <ul class="list-unstyled megamenu-list">
+                                        <li>
+                                            <a href="javascript:void(0);">Widgets</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Nestable List</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Range Sliders</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Masonry Items</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Sweet Alerts</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Treeview Page</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Tour Page</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h5 class="text-dark mt-0">Applications</h5>
+                                    <ul class="list-unstyled megamenu-list">
+                                        <li>
+                                            <a href="javascript:void(0);">eCommerce Pages</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">CRM Pages</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Email</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Calendar</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Team Contacts</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Task Board</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Email Templates</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h5 class="text-dark mt-0">Extra Pages</h5>
+                                    <ul class="list-unstyled megamenu-list">
+                                        <li>
+                                            <a href="javascript:void(0);">Left Sidebar with User</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Menu Collapsed</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Small Left Sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">New Header Style</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Search Result</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Gallery Pages</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Maintenance & Coming Soon</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="text-center mt-3">
+                                <h3 class="text-dark">Special Discount Sale!</h3>
+                                <h4>Save up to 70% off.</h4>
+                                <button class="btn btn-primary rounded-pill mt-3">Download Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
     </div>
-</nav>
+</div>
+<!-- end Topbar -->
