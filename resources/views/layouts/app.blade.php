@@ -108,8 +108,7 @@
 
     <!-- App js-->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    @stack('scripts')
 </body>
-
-@stack('scripts')
 
 </html>
