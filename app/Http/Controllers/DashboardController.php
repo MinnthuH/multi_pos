@@ -10,4 +10,9 @@ class DashboardController extends Controller
     {
         return view('dashboard');
     }
+
+    public function logout_page()
+    {
+        return view('layouts.logout_page');
+    }
 }

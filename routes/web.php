@@ -17,6 +17,8 @@ use App\Http\Controllers\DashboardController;
 
 require __DIR__ . '/auth.php';
 
+Route::get('/logout_page', [DashboardController::class, 'logout_page'])->name('logout_page');
+
 Route::middleware('auth:admin_users')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

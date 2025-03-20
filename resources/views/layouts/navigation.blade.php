@@ -301,11 +301,12 @@
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="{{ route('logout') }}" class="dropdown-item notify-item">
-                        <i class="fe-log-out"></i>
-                        <span>Logout</span>
-                    </a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
 
+                        <button class="dropdown-item notify-item" type="submit"> <i class="fe-log-out"></i>
+                            <span>Logout</span> </button>
+                    </form>
                 </div>
             </li>
 
@@ -321,23 +322,21 @@
         <div class="logo-box">
             <a href="" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="">
+                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
-                <span class="logo-lg pt-3 ps-5">
-                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt=""
-                        style="height: 20px; !important">
+                <span class="logo-lg">
+                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="20">
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>
 
             <a href="" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="">
+                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                 </span>
-                <span class="logo-lg pt-3 ps-5">
-                    <img src="{{ asset('assets/images/logo-light.png') }}" alt=""
-                        style="height: 20px; !important">
+                <span class="logo-lg">
+                    <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="20">
                 </span>
             </a>
         </div>

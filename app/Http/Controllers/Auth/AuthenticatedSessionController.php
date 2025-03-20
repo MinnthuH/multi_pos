@@ -25,9 +25,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // dd($request->all());
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        if (session('url.intended') === route('logout_page')) {
+            return redirect(RouteServiceProvider::HOME);
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -43,6 +48,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/logout_page');
     }
 }
