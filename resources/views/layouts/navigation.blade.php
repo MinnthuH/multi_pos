@@ -298,6 +298,11 @@
                         <span>Edit Profile</span>
                     </a>
 
+                    <a href="{{ route('change-password.edit') }}" class="dropdown-item notify-item">
+                        <i class="fe-lock"></i>
+                        <span>Change Password</span>
+                    </a>
+
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
