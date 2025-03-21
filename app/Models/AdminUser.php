@@ -20,6 +20,7 @@ class AdminUser extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'phno',
         'password',
     ];
 

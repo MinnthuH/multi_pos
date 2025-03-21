@@ -28,6 +28,10 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
+        if ($request->has('phno')) {
+            $request->user()->phno = $request->phno;
+        }
+
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
