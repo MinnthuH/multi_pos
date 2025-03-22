@@ -20,41 +20,38 @@
 
             <div class="row">
                 <div class="col-md-8 offset-2">
-                    <div class="widget-rounded-circle card">
-                        <div class="card-body">
-                            <form method="post" action="{{ route('password.update') }}" class="tw-mt-6 tw-space-y-6">
-                                @csrf
-                                @method('put')
+                    <x-card>
+                        <form method="post" action="{{ route('password.update') }}" class="tw-mt-6 tw-space-y-6">
+                            @csrf
+                            @method('put')
 
-                                <div class="form-group">
-                                    <x-input-label for="update_password_current_password" :value="__('Current Password')" />
-                                    <x-text-input id="update_password_current_password" name="current_password"
-                                        type="password" class="tw-mt-1 tw-block tw-w-full"
-                                        autocomplete="current-password" />
-                                    <x-input-error :messages="$errors->updatePassword->get('current_password')" class="tw-mt-2" />
-                                </div>
+                            <div class="form-group">
+                                <x-input-label for="update_password_current_password" :value="__('Current Password')" />
+                                <x-text-input id="update_password_current_password" name="current_password" type="password"
+                                    class="tw-mt-1 tw-block tw-w-full" autocomplete="current-password" />
+                                <x-input-error :messages="$errors->updatePassword->get('current_password')" class="tw-mt-2" />
+                            </div>
 
-                                <div class="form-group">
-                                    <x-input-label for="update_password_password" :value="__('New Password')" />
-                                    <x-text-input id="update_password_password" name="password" type="password"
-                                        class="tw-mt-1 tw-block tw-w-full" autocomplete="new-password" />
-                                    <x-input-error :messages="$errors->updatePassword->get('password')" class="tw-mt-2" />
-                                </div>
+                            <div class="form-group">
+                                <x-input-label for="update_password_password" :value="__('New Password')" />
+                                <x-text-input id="update_password_password" name="password" type="password"
+                                    class="tw-mt-1 tw-block tw-w-full" autocomplete="new-password" />
+                                <x-input-error :messages="$errors->updatePassword->get('password')" class="tw-mt-2" />
+                            </div>
 
-                                <div class="form-group">
-                                    <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
-                                    <x-text-input id="update_password_password_confirmation" name="password_confirmation"
-                                        type="password" class="tw-mt-1 tw-block tw-w-full" autocomplete="new-password" />
-                                    <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="tw-mt-2" />
-                                </div>
+                            <div class="form-group">
+                                <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
+                                <x-text-input id="update_password_password_confirmation" name="password_confirmation"
+                                    type="password" class="tw-mt-1 tw-block tw-w-full" autocomplete="new-password" />
+                                <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="tw-mt-2" />
+                            </div>
 
-                                <div class="tw-flex tw-justify-center tw-items-center tw-gap-4">
-                                    <x-confirm_button>{{ __('Confirm') }}</x-confirm_button>
-                                    <x-cancel_button href="{{ route('dashboard') }}">{{ __('Cancel') }}</x-cancel_button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                            <div class="tw-flex tw-justify-center tw-items-center tw-gap-4">
+                                <x-confirm_button>{{ __('Confirm') }}</x-confirm_button>
+                                <x-cancel_button href="{{ route('dashboard') }}">{{ __('Cancel') }}</x-cancel_button>
+                            </div>
+                        </form>
+                    </x-card>
                 </div>
             </div>
             <!-- end row-->
