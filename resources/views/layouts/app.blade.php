@@ -74,6 +74,9 @@
 
     <!-- App js-->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+
     @stack('scripts')
 </body>
 
