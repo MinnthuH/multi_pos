@@ -16,6 +16,10 @@
                     </div>
                 </div>
             </div>
+            <x-flash-message></x-flash-message>
+            <x-success-message></x-success-message>
+            <x-error-message></x-error-message>
+
             <!-- end page title -->
 
             <div class="row">
@@ -25,7 +29,6 @@
                             id="submit">
                             @csrf
                             @method('put')
-
                             <div class="form-group">
                                 <x-input-label for="update_password_current_password" :value="__('Current Password')" />
                                 <x-text-input id="update_password_current_password" name="current_password" type="password"

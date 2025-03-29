@@ -24,6 +24,12 @@
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Head js -->
     <script src="{{ asset('assets/js/head.js') }}"></script>
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Jquery Toast css -->
+    <link href="{{ asset('assets/libs/jquery-toast-plugin/jquery.toast.min.css') }}" rel="stylesheet" type="text/css" />
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -42,9 +48,7 @@
 
         <div class="content-page">
             @yield('content')
-
             @include('layouts.footer')
-
         </div>
 
         <!-- ============================================================== -->
@@ -76,7 +80,12 @@
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+    <div class="rightbar-overlay"></div>
+    <!-- Tost-->
+    <script src="{{ asset('assets/libs/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
 
+    <!-- toastr init js-->
+    <script src="{{ asset('assets/js/pages/toastr.init.js') }}"></script>
     @stack('scripts')
 </body>
 

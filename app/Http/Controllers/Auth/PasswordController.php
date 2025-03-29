@@ -26,9 +26,10 @@ class PasswordController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
-            return back()->with('status', 'password-updated');
+            return back()->with('success', 'Successfully changed');
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+        return back()->with('error', $e->getMessage());
     }
 }
