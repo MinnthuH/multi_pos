@@ -9,6 +9,8 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -28,7 +30,10 @@
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- Jquery Toast css -->
-    <link href="{{ asset('assets/libs/jquery-toast-plugin/jquery.toast.min.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="{{ asset('assets/libs/jquery-toast-plugin/jquery.toast.min.css') }}" rel="stylesheet" type="text/css" /> --}}
+
+    <!-- datables -->
+    <link rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -47,6 +52,9 @@
         <!-- ============================================================== -->
 
         <div class="content-page">
+            <div id="error-message" style="display: none;">
+                <x-error-message></x-error-message>
+            </div>
             @yield('content')
             @include('layouts.footer')
         </div>
@@ -71,6 +79,9 @@
     <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
+    <!-- Jquery -->
+    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+
     <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>
 
     <!-- Dashboar 1 init js-->
@@ -82,10 +93,29 @@
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
     <div class="rightbar-overlay"></div>
     <!-- Tost-->
-    <script src="{{ asset('assets/libs/jquery-toast-plugin/jquery.toast.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/libs/jquery-toast-plugin/jquery.toast.min.js') }}"></script> --}}
 
     <!-- toastr init js-->
-    <script src="{{ asset('assets/js/pages/toastr.init.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/pages/toastr.init.js') }}"></script> --}}
+
+    <!-- datables -->
+    <script src="{{ asset('datatables/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
+                },
+                error: function(res, status, error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: res.responseJSON?.message || 'Something went wrong.',
+                    });
+                }
+            })
+        });
+    </script>
     @stack('scripts')
 </body>
 

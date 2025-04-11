@@ -9,8 +9,8 @@
         <div class="container-fluid">
 
             <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
+            <div class="tw-flex tw-justify-between tw-items-center">
+                <div class="tw-flex tw-justify-between tw-items-center">
                     <div class="page-title-box">
                         <h4 class="page-title">Change Password</h4>
                     </div>
