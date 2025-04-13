@@ -2,7 +2,6 @@ import "./bootstrap";
 
 import Alpine from "alpinejs";
 import Swal from "sweetalert2/dist/sweetalert2.js";
-import "../css/app.css";
 
 window.Swal = Swal;
 window.Alpine = Alpine;

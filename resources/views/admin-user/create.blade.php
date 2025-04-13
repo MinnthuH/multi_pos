@@ -54,7 +54,8 @@
 
                             <div class="tw-flex tw-justify-center tw-items-center tw-gap-4">
                                 <x-confirm_button>{{ __('Confirm') }}</x-confirm_button>
-                                <x-cancel_button href="{{ route('dashboard') }}">{{ __('Cancel') }}</x-cancel_button>
+                                <x-cancel_button
+                                    href="{{ route('admin-user.index') }}">{{ __('Cancel') }}</x-cancel_button>
                             </div>
                         </form>
                     </x-card>
