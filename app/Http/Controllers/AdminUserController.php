@@ -7,6 +7,7 @@ use App\Http\Requests\AdminUserUpdateRequest;
 use Exception;
 use Carbon\Carbon;
 use App\Models\AdminUser;
+use App\Repositories\AdminUserRepository;
 use App\Services\ResponseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +15,11 @@ use Yajra\DataTables\Facades\DataTables;
 
 class AdminUserController extends Controller
 {
+    protected $adminUserRepository;
+    public function __construct(AdminUserRepository $adminUserRepository)
+    {
+        $this->adminUserRepository = $adminUserRepository;
+    }
     public function index()
     {
         return view('admin-user.index');
@@ -57,8 +63,9 @@ class AdminUserController extends Controller
         }
     }
 
-    public function edit(AdminUser $admin_user)
+    public function edit($id)
     {
+        $admin_user = $this->adminUserRepository->find($id);
         return view('admin-user.edit', compact('admin_user'));
     }
 
