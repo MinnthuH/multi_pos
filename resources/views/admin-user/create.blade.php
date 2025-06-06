@@ -22,7 +22,7 @@
             <x-error-message></x-error-message>
 
             <div class="row">
-                <div class="col-md-8 offset-2">
+                <div class="col-md-8 col-12 offset-md-2 offset-0">
                     <x-card>
                         <form method="post" action="{{ route('admin-user.store') }}" class="tw-mt-6 tw-space-y-6"
                             id="submit">
@@ -35,6 +35,22 @@
                             </div>
 
                             <div class="form-group">
+                                <x-input-label for="role" value="Role" />
+                                <x-select-input name="role_id" id="role_id" class="tw-mt-1 tw-block tw-w-full"
+                                    :disabled="false">
+                                    <option value="">-- Select Role --</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}"
+                                            {{ old('role') == $role->id ? 'selected' : '' }}>
+                                            {{ $role->name }}
+                                        </option>
+                                    @endforeach
+                                </x-select-input>
+                            </div>
+
+
+
+                            <div class="form-group">
                                 <x-input-label for="email" value="Email" />
                                 <x-text-input id="email" name="email" type="email"
                                     class="tw-mt-1 tw-block tw-w-full" :value="old('email')" />
@@ -45,6 +61,12 @@
                                 <x-text-input id="phno" name="phno" type="text"
                                     class="tw-mt-1 tw-block tw-w-full" :value="old('phno')" />
                             </div>
+
+                            <div class="form-group">
+                                <x-input-label for="address" value="Address" />
+                                <x-textarea id="address" name="address" rows="3">{{ old('address') }}</x-textarea>
+                            </div>
+
 
                             <div class="form-group">
                                 <x-input-label for="password" value="Password" />

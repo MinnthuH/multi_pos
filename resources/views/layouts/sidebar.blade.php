@@ -51,14 +51,38 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('supplier.index') }}">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Supplier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('category.index') }}">
+                        <i class="fas fa-th-list"></i>
+                        <span> Category </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('sub-category.index') }}">
+                        <i class=" fas fa-layer-group"></i>
+                        <span> Sub Category </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('unit.index') }}">                        
+                        <i class="fas fa-solid fa-database"></i>
+                        <span> Unit </span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('role-createPage.index') }}">
-                        <i class=" fas fa-users"></i>
+                        <i class="fas fa-user-friends"></i>
                         <span> User Role </span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin-user.index') }}">
-                        <i class=" fas fa-users"></i>
+                        <i class="fas fa-users"></i>
                         <span> Admin User</span>
                     </a>
                 </li>
